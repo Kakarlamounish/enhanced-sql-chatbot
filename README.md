@@ -149,8 +149,7 @@ The application supports:
 
 
 ## 📧 Contact
-For questions or support, please open an issue on GitHub:
-[![](https://img.shields.io)](https://github.com)
+For questions or support, please [open an issue on GitHub](https://github.com).
 
 
 ---

@@ -149,7 +149,7 @@ The application supports:
 ## 📧 Contact
 
 For questions or support, please open an issue on GitHub.
-!https://github.com/Kakarlamounish
+[GitHub]https://github.com/Kakarlamounish
 
 ---
 

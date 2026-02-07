@@ -2,10 +2,7 @@
 
 A powerful, AI-powered SQL chatbot that allows you to interact with your MySQL database using natural language. Built with Streamlit, Groq AI, and LangChain, this application translates your questions into SQL queries and displays results in an intuitive, user-friendly interface.
 
-![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![Groq](https://img.shields.io/badge/Groq-AI-FF6B6B?style=for-the-badge)
+
 
 ## ✨ Features
 
@@ -19,46 +16,6 @@ A powerful, AI-powered SQL chatbot that allows you to interact with your MySQL d
 - **🛡️ Safety Features**: Built-in protection against dangerous SQL operations (DROP, DELETE, TRUNCATE, etc.)
 
 ## 🚀 Getting Started
-
-### Prerequisites
-
-- Python 3.8 or higher
-- MySQL database (or SQLite for local testing)
-- Groq API key ([Get one here](https://console.groq.com/))
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Kakarlamounish/enhanced-sql-chatbot.git
-   cd enhanced-sql-chatbot
-   ```
-
-2. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Set up environment variables**
-   
-   Create a `.env` file in the root directory:
-   ```env
-   GROQ_API_KEY=your_groq_api_key_here
-   ```
-
-4. **Run the application**
-   ```bash
-   streamlit run app.py
-   ```
-   
-   Or using Python module:
-   ```bash
-   python -m streamlit run app.py
-   ```
-
-5. **Access the application**
-   
-   Open your browser and navigate to `http://localhost:8501`
 
 ## 📖 Usage
 
@@ -165,26 +122,7 @@ The application supports:
 - CSV export functionality
 - Error handling with user-friendly messages
 
-## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## 🙏 Acknowledgments
-
-- [Streamlit](https://streamlit.io/) for the amazing framework
-- [Groq](https://groq.com/) for the fast AI inference
-- [LangChain](https://www.langchain.com/) for AI orchestration tools
-- [SQLAlchemy](https://www.sqlalchemy.org/) for database abstraction
 
 ## 📧 Contact
 

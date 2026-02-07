@@ -1,0 +1,7 @@
+streamlit
+sqlalchemy
+pymysql
+langchain
+python-dotenv
+pandas
+requests

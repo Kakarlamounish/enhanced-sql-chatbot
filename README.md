@@ -115,12 +115,19 @@ The application supports:
 - Sidebar with database configuration and schema explorer
 - Main chat area for natural language queries
 - Interactive query suggestions
-
+- 
 ### Query Results
 - Generated SQL displayed in code blocks
 - Results shown in interactive tables
 - CSV export functionality
 - Error handling with user-friendly messages
+
+  <img width="1865" height="787" alt="image" src="https://github.com/user-attachments/assets/a655f254-5364-4953-9c8e-7ab2a0e6d1a0" />
+
+  <img width="1865" height="787" alt="image" src="https://github.com/user-attachments/assets/f72ae6b5-e2d7-4946-b5b8-1af81920945b" />
+
+<img width="855" height="500" alt="image" src="https://github.com/user-attachments/assets/2507e9e0-546a-4f73-8838-ef6cf049fe2b" />
+
 
 
 

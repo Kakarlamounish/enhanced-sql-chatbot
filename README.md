@@ -146,10 +146,12 @@ The application supports:
 
 
 
-## 📧 Contact
 
-For questions or support, please open an issue on GitHub.
-[GitHub]https://github.com/Kakarlamounish
+
+## 📧 Contact
+For questions or support, please open an issue on GitHub:
+[![](https://img.shields.io)](https://github.com)
+
 
 ---
 

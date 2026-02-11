@@ -9,7 +9,7 @@ from sqlalchemy import inspect
 st.set_page_config(page_title="Enhanced SQL Chatbot", layout="wide", initial_sidebar_state="expanded")
 
 # App header
-st.title("🤖 Enhanced SQL Chatbot (MySQL Edition)")
+st.title("🤖 Enhanced SQL Chatbot (MySQL and POSTGRES Edition)")
 st.caption("Chat with your MySQL database using Groq + LangChain")
 
 # 🌙 Dark theme
@@ -26,19 +26,35 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # 🔐 Admin login
-is_admin = admin_login()
+admin_login()
+is_admin = st.session_state.get("is_admin", False)
 
 # 🛠 Database connection sidebar
 st.sidebar.header("⚙️ Database Configuration")
-db_type = "mysql"
-user = st.sidebar.text_input("MySQL User", value="root")
-password = st.sidebar.text_input("Password", type="password")
-host = st.sidebar.text_input("Host", value="localhost")
-database = st.sidebar.text_input("Database", value="test")
+db_type = st.sidebar.selectbox("Database Type", ["mysql", "postgres", "sqlite"])
+
+if db_type == "sqlite":
+    database = "local.db"
+    user = password = host = None
+    port = None
+else:
+    if db_type == "mysql":
+        user = st.sidebar.text_input("MySQL User", value="root")
+        port = None
+    else:  # postgres
+        user = st.sidebar.text_input("PostgreSQL User", value="postgres")
+        port = st.sidebar.number_input("Port", value=5432, min_value=1, max_value=65535)
+    
+    password = st.sidebar.text_input("Password", type="password")
+    host = st.sidebar.text_input("Host", value="localhost")
+    database = st.sidebar.text_input("Database", value="test")
 
 if st.sidebar.button("Connect"):
     try:
-        engine = get_engine(db_type, user, password, host, database)
+        if db_type == "postgres":
+            engine = get_engine(db_type, user, password, host, database, port)
+        else:
+            engine = get_engine(db_type, user, password, host, database)
         schema = get_schema_preview(engine)
         st.session_state.engine = engine
         st.session_state.schema = schema
@@ -46,6 +62,15 @@ if st.sidebar.button("Connect"):
         st.sidebar.success("✅ Connected successfully!")
     except Exception as e:
         st.sidebar.error(f"Connection failed: {e}")
+
+# Admin-controlled write toggle (enable UPDATE/DELETE)
+if is_admin:
+    write_enable = st.sidebar.checkbox("Enable write operations (UPDATE/DELETE)", value=st.session_state.get("allow_write", False))
+    st.session_state.allow_write = write_enable
+else:
+    # ensure write is off for non-admins
+    st.session_state.allow_write = False
+    st.sidebar.info("Write operations disabled. Login as admin to enable.")
 
 # 🗂 Schema explorer
 if "engine" in st.session_state:
@@ -93,7 +118,7 @@ if "engine" in st.session_state:
 
         # 🚀 Step 2: Execute SQL query
         with st.spinner("🚀 Executing query..."):
-            result = run_query(st.session_state.engine, sql)
+            result = run_query(st.session_state.engine, sql, allow_write=st.session_state.get("allow_write", False))
 
         # ✅ Step 3: Show results or errors
         if isinstance(result, str) and "Error" in result:
